@@ -20,14 +20,16 @@ class ShoppingCart
   end
 
   def total_number_of_products 
-    @products.sum do |product| 
-      product.quantity
-    end
+    # @products.sum do |product| 
+    #   product.quantity
+    # end
+    @products.sum(&:quantity)
   end
 
   def is_full? 
-    return true if total_number_of_products > @capacity
-    false
+    # return true if total_number_of_products > @capacity
+    # false
+    total_number_of_products > @capacity
   end
 
   def products_by_category(category) 
